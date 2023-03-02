@@ -1,0 +1,34 @@
+<!-- itemlist -->
+<style>
+#result {
+	width: 400px;
+	border: 1px solid red;
+}
+
+#i_img {
+	width:30px;
+}
+</style>
+
+<h1>item/ch1</h1>
+
+<table id="result">
+	<thead>
+		<tr>
+			<th>IMG</th>
+			<th>ID</th>
+			<th>NAME</th>
+			<th>PRICE</th>
+			<th>RDATE</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="i:${itemlist}">
+			<td><img id="i_img" th:src="@{/img/}+${i.imgname}"></td>
+			<td><a th:href="@{/item/get(id=${i.id})}" th:text="${i.id}"></td>
+			<td th:text="${i.name}"></td>
+			<td th:text="${i.price}"></td>
+			<td th:text="${#dates.format(i.rdate,'yyyy-MM-dd')}"></td>
+		</tr>
+	</tbody>
+</table>

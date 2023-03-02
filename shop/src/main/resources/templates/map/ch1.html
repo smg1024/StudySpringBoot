@@ -1,0 +1,77 @@
+<style>
+#map {
+	width: 500px;
+	height: 400px;
+	border: 1px solid red;
+}
+</style>
+
+<script>
+	var map;
+	
+	function setMarker(lat,lng){
+		var markerPosition  = new kakao.maps.LatLng(lat,lng); 
+
+		var marker = new kakao.maps.Marker({
+		    position: markerPosition
+		});
+
+		marker.setMap(map);
+		
+		// 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
+		var iwContent = '<div style="padding:5px;">Hello World!</div>'
+						+ '<img src="/img/food.jpg" style="width:90px;">'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+
+		// 인포윈도우를 생성합니다
+		var infowindow = new kakao.maps.InfoWindow({
+		    content : iwContent
+		});
+		
+		// 마커에 마우스오버 이벤트를 등록합니다
+		kakao.maps.event.addListener(marker, 'mouseover', function() {
+		    infowindow.open(map, marker);
+		});
+
+		// 마커에 마우스아웃 이벤트를 등록합니다
+		kakao.maps.event.addListener(marker, 'mouseout', function() {
+		    infowindow.close();
+		});
+		
+		kakao.maps.event.addListener(marker, 'click', function() {
+		    location.href='http://www.naver.com';
+		});
+	};
+	
+	function center(){
+		var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+		var options = { //지도를 생성할 때 필요한 기본 옵션
+			center : new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+			level : 7	//지도의 레벨(확대, 축소 정도)
+		};
+
+		map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+		setMarker(33.450701, 126.570667);
+	};
+	
+	function panTo(lat,lng){
+		var moveLatLon = new kakao.maps.LatLng(lat,lng);
+		map.panTo(moveLatLon);
+		setMarker(lat,lng);
+	};
+	
+	$(document).ready(function() {
+		center();
+		
+		$('#seoul').click(function(){
+			panTo(37.521730,127.047587);
+		});
+		$('#busan').click(function(){
+			panTo(35.103750,129.000315);
+		});
+	});
+</script>
+
+<h1>map/ch1</h1>
+<button id="seoul">Seoul</button>
+<button id="busan">Busan</button>
+<div id="map"></div>

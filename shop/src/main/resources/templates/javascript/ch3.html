@@ -1,0 +1,17 @@
+<script>
+	window.onload = function() {
+		var email = document.querySelector('#email').innerHTML;	// email주소
+		var at = email.indexOf('@');	// @ index
+		var rid = email.substring(0,at);	// 아이디
+		var len = email.length;	// email주소 길이
+		var rdomain = email.substring(at+1,len);	// 도메인
+		
+		document.querySelector('#rid').innerHTML = rid;
+		document.querySelector('#rdomain').innerHTML = rdomain;
+	}
+</script>
+
+<h1>javascript/ch3</h1>
+<h2 id="email">smg981024@gmail.com</h2>
+<h2 id="rid"></h2>
+<h2 id="rdomain"></h2>

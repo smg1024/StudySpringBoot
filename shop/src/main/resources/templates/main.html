@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+<link th:href="@{/css/main.css}" rel="stylesheet">
+<style></style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- 카카오맵API -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e2974e526479c65df024434300b7be7b"></script>
+<!-- Highchart Library -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<!-- WebSocket Library -->
+<script th:src="@{/webjars/sockjs-client/sockjs.min.js}"></script>
+<script th:src="@{/webjars/stomp-websocket/stomp.min.js}"></script>
+</head>
+<body>
+	<header>
+		<ul>
+			<li><a th:href="@{/}">Home</a></li>
+			<li><a th:href="@{/html5}">HTML5</a></li>
+			<li><a th:href="@{/css}">CSS</a></li>
+			<li><a th:href="@{/javascript}">Javascript</a></li>
+			<li><a th:href="@{/jquery}">jQuery</a></li>
+			<li><a th:href="@{/ajax}">Ajax</a></li>
+			<li><a th:href="@{/map}">Map</a></li>
+			<li><a th:href="@{/chart}">Chart</a></li>
+		</ul>
+		<ul>
+			<li><a th:href="@{/cust}">Cust DB</a></li>
+			<li><a th:href="@{/item}">Item DB</a></li>
+			<li><a th:href="@{/cart}">Cart DB</a></li>
+		</ul>
+		<ul th:if="${session.logincust == null}">
+			<li><a th:href="@{/login}">LOGIN</a></li>
+			<li><a th:href="@{/reg}">Register</a></li>
+			<li><a th:href="@{/about}">About us</a></li>
+		</ul>
+		<ul th:if="${session.logincust != null}">
+			<li><a th:href="@{/logout}">LOGOUT</a></li>
+			<li><a th:href="@{/websocket}">WebSocket</a></li>
+		</ul>
+	</header>
+	<section>
+		<aside id="left_aside" th:include="${left} ? ${left} : left"></aside>
+		<aside id="center_aside" th:include="${center} ? ${center} : center"></aside>
+	</section>
+	<footer>
+		<h3 th:text="#{home.welcome('hi', 'kim')}">환영합니다!</h3>
+		<h4 th:text="#{tel('010-1234-1234')}"></h4>
+	</footer>
+</body>
+</html>

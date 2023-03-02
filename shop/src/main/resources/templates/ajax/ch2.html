@@ -1,0 +1,42 @@
+<style>
+#result {
+	width: 400px;
+	border: 2px solid blue;
+}
+</style>
+
+<script>
+	function display(data) {
+		var content = '';
+		
+		$(data).each(function(idx,item){
+			content += '<h2>';
+			content += 'rank : ' + item.rank + ', title : ' + item.title + ', updown : ' + item.updown;
+			content += '</h2>';
+		});
+		
+		$('#result').html(content);
+	};
+
+	function getdata() {
+		$.ajax({
+			url : '[[@{/rank}]]',
+			success : function(data) {
+				display(data);
+			},
+			error : function() {
+				alert('error');
+			}
+		});
+	};
+
+	$(document).ready(function() {
+		$('#btn').click(function() {
+			getdata();
+		});
+	});
+</script>
+
+<h1>ajax/ch2</h1>
+<button id="btn">GET DATA</button>
+<div id="result"></div>

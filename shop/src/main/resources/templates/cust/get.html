@@ -1,0 +1,25 @@
+<!-- cust -->
+<script>
+	$(document).ready(function(){
+		$('#update').click(function(){
+			var c = confirm('수정하시겠습니까?');
+			if(c==true){
+				$('#update_form').attr({
+					'method':'post',
+					'action':'[[@{/cust/update}]]'
+				});
+				$('#update_form').submit();
+			}
+		});
+	});
+</script>
+
+<h1>cust/get</h1>
+
+<form id="update_form">
+	ID<input type="text" name="id" th:value="${cust.id}" readonly><br>
+	PWD<input type="text" name="pwd" th:value="${cust.pwd}"><br>
+	NAME<input type="text" name="name" th:value="${cust.name}"><br>
+	<a href="#" id="update">UPDATE</a>
+	<a th:href="@{/cust/delete(id=${cust.id})}" id="delete">DELETE</a>
+</form>

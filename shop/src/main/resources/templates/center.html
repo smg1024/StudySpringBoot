@@ -1,0 +1,31 @@
+<style>
+	#weather{
+		width:300px;
+		border:1px solid blue;
+	}
+</style>
+
+<script>
+	function display(jsondata){
+		var result = jsondata.response.body.items.item[0].wfSv;
+		$('#weather').text(result);
+	}
+	
+	function getdata(){
+		$.ajax({
+			url:'[[@{/weather}]]',
+			data:{'loc':'108'},
+			success:function(data){
+				var jsondata = JSON.parse(data);
+				display(jsondata);
+			}
+		});
+	}
+	
+	$(document).ready(function(){
+		getdata();
+	});
+</script>
+
+<h1>센터</h1>
+<div id="weather"></div>

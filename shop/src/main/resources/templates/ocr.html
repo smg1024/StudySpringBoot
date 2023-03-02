@@ -1,0 +1,360 @@
+<script>
+
+$(function(){
+	 
+    $('#uploadBtn').on('click', function(){
+        uploadFile();
+    });
+ 
+});
+
+function display(data){
+	var jsondata = JSON.parse(data);
+}
+
+function uploadFile(){
+    
+    var form = $('#uploadForm')[0];
+    var formData = new FormData(form);
+ 
+    $.ajax({
+        url : '[[@{/ocrimpl}]]',
+        type : 'POST',
+        data : formData,
+        contentType : false,
+        processData : false        
+    }).done(function(data){
+        alert(data);
+    });
+}
+$.ajax(
+	{
+		"version" : "V2",
+		"requestId" : "89fcae97-c3c8-4737-a6ea-f5ed0982c1e9",
+		"timestamp" : 1674091194230,
+		"images" : [ {
+			"uid" : "745bdaa8c40947c0b6bd186747cdee91",
+			"name" : "demo",
+			"inferResult" : "SUCCESS",
+			"message" : "SUCCESS",
+			"matchedTemplate" : {
+				"id" : 22519,
+				"name" : "사업자등록증"
+			},
+			"validationResult" : {
+				"result" : "NO_REQUESTED"
+			},
+			"convertedImageInfo" : {
+				"width" : 768,
+				"height" : 1086,
+				"pageIndex" : 0,
+				"longImage" : false
+			},
+			"fields" : [ {
+				"name" : "reg_number",
+				"valueType" : "ALL",
+				"boundingPoly" : {
+					"vertices" : [ {
+						"x" : 257.0,
+						"y" : 194.0
+					}, {
+						"x" : 522.0,
+						"y" : 194.0
+					}, {
+						"x" : 522.0,
+						"y" : 221.0
+					}, {
+						"x" : 257.0,
+						"y" : 221.0
+					} ]
+				},
+				"inferText" : "등록번호 : 214-87-39314",
+				"inferConfidence" : 0.9592,
+				"type" : "NORMAL",
+				"subFields" : [ {
+					"boundingPoly" : {
+						"vertices" : [ {
+							"x" : 257.0,
+							"y" : 194.0
+						}, {
+							"x" : 373.0,
+							"y" : 194.0
+						}, {
+							"x" : 373.0,
+							"y" : 221.0
+						}, {
+							"x" : 257.0,
+							"y" : 221.0
+						} ]
+					},
+					"inferText" : "등록번호 :",
+					"inferConfidence" : 0.9186,
+					"lineBreak" : false
+				}, {
+					"boundingPoly" : {
+						"vertices" : [ {
+							"x" : 373.0,
+							"y" : 195.0
+						}, {
+							"x" : 522.0,
+							"y" : 195.0
+						}, {
+							"x" : 522.0,
+							"y" : 221.0
+						}, {
+							"x" : 373.0,
+							"y" : 221.0
+						} ]
+					},
+					"inferText" : "214-87-39314",
+					"inferConfidence" : 0.9998,
+					"lineBreak" : true
+				} ]
+			}, {
+				"name" : "comp_name",
+				"valueType" : "ALL",
+				"boundingPoly" : {
+					"vertices" : [ {
+						"x" : 224.0,
+						"y" : 232.0
+					}, {
+						"x" : 420.0,
+						"y" : 232.0
+					}, {
+						"x" : 420.0,
+						"y" : 254.0
+					}, {
+						"x" : 224.0,
+						"y" : 254.0
+					} ]
+				},
+				"inferText" : "드림에이피에스 주식회사",
+				"inferConfidence" : 0.99995,
+				"type" : "NORMAL",
+				"subFields" : [ {
+					"boundingPoly" : {
+						"vertices" : [ {
+							"x" : 224.0,
+							"y" : 232.0
+						}, {
+							"x" : 345.0,
+							"y" : 232.0
+						}, {
+							"x" : 345.0,
+							"y" : 253.0
+						}, {
+							"x" : 224.0,
+							"y" : 253.0
+						} ]
+					},
+					"inferText" : "드림에이피에스",
+					"inferConfidence" : 0.9999,
+					"lineBreak" : false
+				}, {
+					"boundingPoly" : {
+						"vertices" : [ {
+							"x" : 350.0,
+							"y" : 232.0
+						}, {
+							"x" : 420.0,
+							"y" : 232.0
+						}, {
+							"x" : 420.0,
+							"y" : 254.0
+						}, {
+							"x" : 350.0,
+							"y" : 254.0
+						} ]
+					},
+					"inferText" : "주식회사",
+					"inferConfidence" : 1.0,
+					"lineBreak" : true
+				} ]
+			}, {
+				"name" : "addr",
+				"valueType" : "ALL",
+				"boundingPoly" : {
+					"vertices" : [ {
+						"x" : 223.0,
+						"y" : 390.0
+					}, {
+						"x" : 663.0,
+						"y" : 390.0
+					}, {
+						"x" : 663.0,
+						"y" : 412.0
+					}, {
+						"x" : 223.0,
+						"y" : 412.0
+					} ]
+				},
+				"inferText" : "서울특별시 마포구 월드컵로 96, 4층(서교동, 영훈빌딩)",
+				"inferConfidence" : 0.99795,
+				"type" : "NORMAL",
+				"subFields" : [ {
+					"boundingPoly" : {
+						"vertices" : [ {
+							"x" : 223.0,
+							"y" : 390.0
+						}, {
+							"x" : 311.0,
+							"y" : 390.0
+						}, {
+							"x" : 311.0,
+							"y" : 411.0
+						}, {
+							"x" : 223.0,
+							"y" : 411.0
+						} ]
+					},
+					"inferText" : "서울특별시",
+					"inferConfidence" : 1.0,
+					"lineBreak" : false
+				}, {
+					"boundingPoly" : {
+						"vertices" : [ {
+							"x" : 316.0,
+							"y" : 390.0
+						}, {
+							"x" : 370.0,
+							"y" : 390.0
+						}, {
+							"x" : 370.0,
+							"y" : 411.0
+						}, {
+							"x" : 316.0,
+							"y" : 411.0
+						} ]
+					},
+					"inferText" : "마포구",
+					"inferConfidence" : 1.0,
+					"lineBreak" : false
+				}, {
+					"boundingPoly" : {
+						"vertices" : [ {
+							"x" : 374.0,
+							"y" : 390.0
+						}, {
+							"x" : 445.0,
+							"y" : 390.0
+						}, {
+							"x" : 445.0,
+							"y" : 411.0
+						}, {
+							"x" : 374.0,
+							"y" : 411.0
+						} ]
+					},
+					"inferText" : "월드컵로",
+					"inferConfidence" : 1.0,
+					"lineBreak" : false
+				}, {
+					"boundingPoly" : {
+						"vertices" : [ {
+							"x" : 448.0,
+							"y" : 393.0
+						}, {
+							"x" : 477.0,
+							"y" : 393.0
+						}, {
+							"x" : 477.0,
+							"y" : 410.0
+						}, {
+							"x" : 448.0,
+							"y" : 410.0
+						} ]
+					},
+					"inferText" : "96,",
+					"inferConfidence" : 0.9968,
+					"lineBreak" : false
+				}, {
+					"boundingPoly" : {
+						"vertices" : [ {
+							"x" : 480.0,
+							"y" : 390.0
+						}, {
+							"x" : 578.0,
+							"y" : 390.0
+						}, {
+							"x" : 578.0,
+							"y" : 412.0
+						}, {
+							"x" : 480.0,
+							"y" : 412.0
+						} ]
+					},
+					"inferText" : "4층(서교동,",
+					"inferConfidence" : 0.9918,
+					"lineBreak" : false
+				}, {
+					"boundingPoly" : {
+						"vertices" : [ {
+							"x" : 583.0,
+							"y" : 391.0
+						}, {
+							"x" : 663.0,
+							"y" : 391.0
+						}, {
+							"x" : 663.0,
+							"y" : 412.0
+						}, {
+							"x" : 583.0,
+							"y" : 412.0
+						} ]
+					},
+					"inferText" : "영훈빌딩)",
+					"inferConfidence" : 0.9991,
+					"lineBreak" : true
+				} ]
+			} ],
+			"title" : {
+				"name" : "사업자등록증",
+				"boundingPoly" : {
+					"vertices" : [ {
+						"x" : 233.0,
+						"y" : 114.0
+					}, {
+						"x" : 534.0,
+						"y" : 116.0
+					}, {
+						"x" : 534.0,
+						"y" : 159.0
+					}, {
+						"x" : 232.0,
+						"y" : 157.0
+					} ]
+				},
+				"inferText" : "사업자등록증",
+				"inferConfidence" : 0.9998,
+				"subFields" : [ {
+					"boundingPoly" : {
+						"vertices" : [ {
+							"x" : 233.0,
+							"y" : 114.0
+						}, {
+							"x" : 534.0,
+							"y" : 116.0
+						}, {
+							"x" : 534.0,
+							"y" : 159.0
+						}, {
+							"x" : 232.0,
+							"y" : 157.0
+						} ]
+					},
+					"inferText" : "사업자등록증",
+					"inferConfidence" : 0.9998,
+					"lineBreak" : true
+				} ]
+			}
+		} ]
+	})
+</script>
+
+<h1>OCR Center</h1>
+
+<form id="uploadForm">
+    <input type="file" name="img">
+    <button type="button" id="uploadBtn">Send</button>
+</form>
+<div id="result"></div>

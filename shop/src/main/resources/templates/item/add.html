@@ -1,0 +1,24 @@
+<script>
+	$(document).ready(function(){
+		$('#register_form > a').click(function(){
+			var c = confirm('가입하시겠습니까?');
+			if(c==true){
+				$('#register_form').attr({
+					'enctype':'multipart/form-data',
+					'method':'post',
+					'action':'[[@{/item/register}]]'
+				});
+				$('#register_form').submit();
+			}
+		});
+	});
+</script>
+
+<h1>item/add</h1>
+
+<form id="register_form">
+	NAME<input type="text" name="name"><br>
+	PRICE<input type="number" name="price"><br>
+	IMG<input type="file" name="img"><br>
+	<a href="#">REGISTER</a>
+</form>

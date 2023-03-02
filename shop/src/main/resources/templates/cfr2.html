@@ -1,0 +1,44 @@
+<script>
+
+$(function(){
+	 
+    $('#uploadBtn').on('click', function(){
+        uploadFile();
+    });
+ 
+});
+
+function display(data){
+	var jsondata = JSON.parse(data);
+	var age = jsondata.faces[0].age.value;
+	var gender = jsondata.faces[0].gender.value;
+	var result = '<h1>'+age+'years old'+'</h1>';
+	result += '<h1>'+gender+'</h1>';
+	$('#result').html(result);
+}
+
+function uploadFile(){
+    
+    var form = $('#uploadForm')[0];
+    var formData = new FormData(form);
+ 
+    $.ajax({
+        url : '[[@{/cfr2impl}]]',
+        type : 'POST',
+        data : formData,
+        contentType : false,
+        processData : false        
+    }).done(function(data){
+        display(data);
+    });
+}
+
+</script>
+
+<h1>CFR2 Center</h1>
+
+<form id="uploadForm">
+    <input type="file" name="img">
+    <button type="button" id="uploadBtn">Send</button>
+</form>
+<div id="result"></div>

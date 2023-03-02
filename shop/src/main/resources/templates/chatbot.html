@@ -1,0 +1,91 @@
+<style>
+
+
+#me {
+	width: 400px;
+	height: 200px;
+	overflow: auto;
+	border: 2px solid blue;
+}
+
+
+</style>
+
+<script>
+var stompClient = null;
+var id = '[[${session.logincust.id}]]';
+function connect() {
+	//var socket = new SockJS('http://127.0.0.1:8080/shopadmin/chbot');
+	var socket = new SockJS('http://118.67.134.56/shopadmin/chbot');
+	stompClient = Stomp.over(socket);
+
+	stompClient.connect({}, function(frame) { 
+		setConnected(true);
+		console.log('Connected: ' + frame);
+		
+		stompClient.subscribe('/send/'+id, function(msg) { 
+			$("#me").prepend(
+					"<h4>" + JSON.parse(msg.body).sendid +":"+
+					JSON.parse(msg.body).content1+":"+
+					JSON.parse(msg.body).content2
+							+ "</h4>");
+		});
+		
+	});
+}
+
+function disconnect() {
+	if (stompClient !== null) {
+		stompClient.disconnect();
+	}
+	setConnected(false);
+	console.log("Disconnected");
+}
+
+function setConnected(connected) {
+	if (connected) {
+		$("#status").text("Connected");
+	} else {
+		$("#status").text("Disconnected");
+	}
+	
+}
+
+
+function sendMe() {
+	var msg = JSON.stringify({
+		'sendid' : id,
+		'content1' : $('#metext').val()
+	});
+	stompClient.send("/chatbotme", {}, msg);
+}
+
+$(document).ready(function() {
+	$("#connect").click(function() {
+		connect();
+	});
+	$("#disconnect").click(function() {
+		disconnect();
+	});
+	
+	$("#sendme").click(function() {
+		sendMe();
+	});
+	
+});
+</script>
+
+
+<div class="container">
+	<div class="col-sm-5">
+	<H1 th:text="${session.logincust.id}">ID</H1>
+	<H1 id="status">Status</H1>
+	<button id="connect">Connect</button>
+	<button id="disconnect">Disconnect</button>
+	
+	<h3>Me</h3>
+	<input type="text" id="metext"><button id="sendme">Send</button>
+	<div id="me"></div>
+
+	</div>
+</div>

@@ -1,0 +1,47 @@
+<script>
+	function display(time){
+		$('#time').text(time);
+	};
+	
+	function gettime(){
+		$.ajax({
+			url:'[[@{/time}]]',
+			success:function(time){
+				display(time);
+			},
+			error:function(){
+				alert('error');
+			}
+		});
+	};
+	
+	function display2(cnt){
+		$('#cnt').text(cnt);
+	};
+	
+	function getcnt(){
+		$.ajax({
+			url:'[[@{/cnt}]]',
+			success:function(data){
+				display2(data);
+			}
+		});
+	};
+	
+	$(document).ready(function(){
+		gettime();
+		setInterval(function(){
+			gettime();
+		},1000);
+		
+		setInterval(function(){
+			getcnt();
+		},3000);
+	});
+</script>
+
+<h1>ajax/ch1</h1>
+<h1>-------------</h1>
+<h1 id="time"></h1>
+<h1>회원 수:<span id="cnt"></span></h1>
+<h1>-------------</h1>

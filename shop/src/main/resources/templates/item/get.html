@@ -1,0 +1,39 @@
+<!-- item -->
+<script>
+	$(document).ready(function(){
+		$('#update').click(function(){
+			var c = confirm('수정하시겠습니까?');
+			if(c==true){
+				$('#update_form').attr({
+					'enctype':'multipart/form-data',
+					'method':'post',
+					'action':'[[@{/item/update}]]'
+				});
+				$('#update_form').submit();
+			}
+		});
+		
+		$('#delete').click(function(){
+			var c = confirm('삭제하시겠습니까?');
+			if(c==true){
+				var id = $('input[name="id"]').val();
+				location.href = '[[@{/item/delete(id=${item.id})}]]';
+			};
+		});
+	});
+</script>
+
+<h1>item/get</h1>
+
+<form id="update_form">
+	ID<input type="text" name="id" th:value="${item.id}" readonly><br>
+	NAME<input type="text" name="name" th:value="${item.name}"><br>
+	PRICE<input type="number" name="price" th:value="${item.price}"><br>
+	RDATE<!-- input type="date" name="rdate" th:value="${#dates.format(item.rdate,'yyyy-MM-dd')}" readonly--><br>
+	IMG<img th:src="@{/img/}+${item.imgname}" style="width:30px;"><br>
+	<input type="hidden" name="imgname" th:value="${item.imgname}">
+	UPDATE IMG<input type="file" name="img"><br><br>
+	
+	<a href="#" id="update">UPDATE</a>
+	<a href="#" id="delete">DELETE</a>
+</form>

@@ -1,0 +1,68 @@
+<style>
+	#mytbl {
+		width:400px;
+		height:200px;
+		border:1px solid linen;
+		margin:10px auto;
+		border-collapse:collapse;
+	}
+	
+	#mytbl > thead > tr {
+		background:black;
+		color:white;
+	}
+	
+	#mytbl > tbody > tr:nth-child(2n+1) {
+		background:gray;
+		color:blue;
+	}
+	
+	#mytbl > tbody > tr:hover {
+		background:blue;
+		color:yellow;
+	}
+</style>
+
+<h1>css/ch1</h1>
+
+<table id="mytbl">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>PWD</th>
+			<th>NAME</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>id01</td>
+			<td>pwd01</td>
+			<td>james</td>
+		</tr>
+		<tr>
+			<td>id02</td>
+			<td>pwd02</td>
+			<td>john</td>
+		</tr>
+		<tr>
+			<td>id03</td>
+			<td>pwd03</td>
+			<td>jane</td>
+		</tr>
+		<tr>
+			<td>id04</td>
+			<td>pwd04</td>
+			<td>joey</td>
+		</tr>
+		<tr>
+			<td>id05</td>
+			<td>pwd05</td>
+			<td>ross</td>
+		</tr>
+		<tr>
+			<td>id06</td>
+			<td>pwd06</td>
+			<td>rachael</td>
+		</tr>
+	</tbody>
+</table>

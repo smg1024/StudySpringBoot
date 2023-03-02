@@ -1,0 +1,48 @@
+<style>
+#result {
+	width: 300px;
+	border: 2px solid blue;
+}
+</style>
+
+<script>
+	function display(data){
+		var content = '';
+		
+		$(data).each(function(idx,item){
+			
+			// <h3><img src="/img/Jack.jpg">james1 : 10</h3>
+			
+			content += '<h3>';
+			content += '<img src="/img/'+item.img+'" width="50px">';
+			content += item.name + ' : ' + item.age;
+			content += '</h3>';
+		});
+		
+		$('#result').html(content);
+	};
+
+	function getdata(){
+		var data = [
+			{'name':'james1','age':10,'img':'Jack.jpg'},
+			{'name':'james2','age':20,'img':'John.jpg'},
+			{'name':'james3','age':30,'img':'July.jpg'},
+			{'name':'james4','age':40,'img':'Mary.jpg'},
+			{'name':'james5','age':50,'img':'Sarah.jpg'}
+		];
+		display(data);
+	};
+	
+	$(document).ready(function(){
+		$('#ch6 > a').click(function(){
+			getdata();
+		});
+	});
+</script>
+
+<h1>jquery/ch6</h1>
+
+<div id="ch6">
+	<a href="#">Get Data</a>
+	<div id="result"></div>
+</div>
